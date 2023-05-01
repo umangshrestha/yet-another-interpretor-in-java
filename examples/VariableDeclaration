@@ -1,0 +1,2 @@
+let name = "Variable";
+print("Hello, " + name + "!");

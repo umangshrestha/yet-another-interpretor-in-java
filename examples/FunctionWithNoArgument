@@ -1,0 +1,6 @@
+fn greet() {
+    return "Hello, World from function!";
+}
+
+let message = greet();
+print(message);

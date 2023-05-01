@@ -1,0 +1,16 @@
+let a = "Global variable";
+
+fn outer() {
+    let b = "Outer variable";
+    
+    fn inner() {
+        let c = "Inner variable";
+        print(a);
+        print(b);
+        print(c);
+    }
+
+    inner();
+}
+
+outer();

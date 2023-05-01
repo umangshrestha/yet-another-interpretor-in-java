@@ -1,0 +1,16 @@
+let a = 1;
+print(a, typeOf(a)); // 1, Double
+let b = 1.0;
+print(b, typeOf(b)); // 1, Double
+let c = "Hello, World!";
+print(c, typeOf(c)); // Hello, World!, String
+let d = true;
+print(d, typeOf(d)); // true, Boolean
+let e = null;
+print(e, typeOf(e)); // null, Null
+let f = [1, 2, 3];
+print(f, typeOf(f)); // [1, 2, 3], ArrayList
+let g = { a: 1, b: 2 };
+print(g, typeOf(g)); // { a: 1, b: 2 }, HashMap
+fn h () { print("Hello, World!"); }
+print(h, typeOf(h)); // fn() { print("Hello, World!"); }, CustomFunction
