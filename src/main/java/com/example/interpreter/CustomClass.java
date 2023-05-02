@@ -15,6 +15,8 @@ public class CustomClass implements CustomCallable {
     private final CustomClass superclass;
     private final Map<String, CustomFunction> methods;
 
+    public static final String constructor = "constructor";
+
     public CustomFunction findMethod(CustomInstance instance, String name) {
         if (methods.containsKey(name))
             return methods.get(name).bind(instance);
@@ -25,16 +27,14 @@ public class CustomClass implements CustomCallable {
 
     @Override
     public int arity() {
-        CustomFunction initializer = methods.get("init");
-        if (initializer == null)
-            return 0;
-        return initializer.arity();
+        CustomFunction initializer = methods.get(constructor);
+        return (initializer == null) ? 0 : initializer.arity();
     }
 
     @Override
     public Object call(Interpreter interpreter, List<Object> arguments) {
         CustomInstance instance = new CustomInstance(this);
-        CustomFunction initializer = methods.get("init");
+        CustomFunction initializer = methods.get(constructor);
         if (initializer != null)
             initializer.bind(instance).call(interpreter, arguments);
         return instance;

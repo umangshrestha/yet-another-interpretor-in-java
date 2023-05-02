@@ -1,0 +1,13 @@
+class Circle {
+    constructor(radius) {
+        this.radius = radius;
+        this.pi = 3.14;
+    }
+
+    area() {
+        return this.pi * this.radius ^ 2;
+    }
+}
+
+let circle = Circle(5);
+print(circle.area());

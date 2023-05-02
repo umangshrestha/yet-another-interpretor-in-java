@@ -13,4 +13,4 @@ print(f, typeOf(f)); // [1, 2, 3], ArrayList
 let g = { a: 1, b: 2 };
 print(g, typeOf(g)); // { a: 1, b: 2 }, HashMap
 fn h () { print("Hello, World!"); }
-print(h, typeOf(h)); // fn() { print("Hello, World!"); }, CustomFunction
+print(h, typeOf(h)); // <fn:"h"> { print("Hello, World!"); }, CustomFunction

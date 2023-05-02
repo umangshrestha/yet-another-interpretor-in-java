@@ -433,6 +433,8 @@ public class Parser {
             return array();
         else if (match(TokenType.LeftBrace))
             return map();
+        else if (match(TokenType.This))
+            return new Expr.This(current);
         else if (match(TokenType.LeftParen)) {
             Expr expr = expression();
             shouldBe(TokenType.RightParen, "Expect ')' after expression");
@@ -470,7 +472,6 @@ public class Parser {
 
     private Expr map() throws ParserError {
         HashMap<Expr, Expr> map = new HashMap<>();
-        Token operator = current;
         if (!isNextToken(TokenType.RightBrace)) {
             do {
                 Expr key = expression();

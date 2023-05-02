@@ -32,6 +32,7 @@ import com.example.ast.Stmt.If;
 import com.example.ast.Stmt.Let;
 import com.example.ast.Stmt.Return;
 import com.example.ast.Stmt.While;
+import com.example.interpreter.CustomClass;
 import com.example.token.Token;
 import com.example.ast.StmtVisitor;
 
@@ -95,7 +96,7 @@ public class Resolver implements ExprVisitor, StmtVisitor {
 
         for (Function method : stmt.getMethods()) {
             FunctionType declaration = FunctionType.METHOD;
-            if (method.getName().getLiteral().equals("init"))
+            if (method.getName().getLiteral().equals(CustomClass.constructor))
                 declaration = FunctionType.INITIALIZER;
             resolveFunction(method, declaration);
         }

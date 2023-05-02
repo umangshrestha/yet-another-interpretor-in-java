@@ -98,6 +98,7 @@ public class App {
         sb.append("↑");
         sb.append("\nRuntimeError:");
         sb.append(message);
+        sb.append("\n");
         return sb.toString();
     }
 }

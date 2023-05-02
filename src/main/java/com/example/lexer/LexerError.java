@@ -26,6 +26,7 @@ public class LexerError extends Exception {
         sb.append("↑");
         sb.append("\nSyntaxError:");
         sb.append(message);
+        sb.append("\n");
         return sb.toString();
     }
 }

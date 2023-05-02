@@ -1,0 +1,13 @@
+class Greet {
+    constructor() {
+        print("constructor called");
+    }
+
+    sayHello() {
+        print("Hello");
+    }
+}
+
+
+let c = Greet();
+c.sayHello();

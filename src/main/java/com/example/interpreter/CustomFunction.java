@@ -51,4 +51,9 @@ public class CustomFunction implements CustomCallable {
         return null;
     }
 
+    @Override
+    public String toString() {
+        return "<fn:\"" + declaration.getName().getLiteral() + "\">";
+    }
+
 }
