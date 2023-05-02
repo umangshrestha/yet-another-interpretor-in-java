@@ -22,9 +22,9 @@ public class LexerObject {
         return Arrays.asList(new Object[][] {
                 { "1", new Token(TokenType.Number, 1, 1, 1.0) },
                 { "1.0", new Token(TokenType.Number, 1, 1, 1.0) },
-                { "true", new Token(TokenType.True, 1, 1, null) },
-                { "false", new Token(TokenType.False, 1, 1, null) },
-                { "null", new Token(TokenType.Null, 1, 1, null) },
+                { "true", new Token(TokenType.True, 1, 1, "true") },
+                { "false", new Token(TokenType.False, 1, 1, "false") },
+                { "null", new Token(TokenType.Null, 1, 1, "null") },
         });
     }
 

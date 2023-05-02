@@ -260,12 +260,13 @@ public class Interpreter implements ExprVisitor, StmtVisitor {
         }
         Map<String, CustomFunction> methods = new HashMap<>();
         for (Stmt.Function method : stmt.getMethods()) {
+            String className = (String) method.getName().getLiteral();
             methods.put(
-                    (String) method.getName().getLiteral(),
+                    className,
                     new CustomFunction(
                             method,
                             environment,
-                            method.getName().getLiteral().equals("init")));
+                            className.equals(CustomClass.constructor)));
         }
         CustomClass klass = new CustomClass(
                 (String) stmt.getName().getLiteral(),
@@ -299,7 +300,8 @@ public class Interpreter implements ExprVisitor, StmtVisitor {
         if (function.arity() == -1 || function.arity() == arguments.size()) {
             return function.call(this, arguments);
         }
-        throw new RuntimeError("Expected " + function.arity() + " arguments but got " + arguments.size(),
+        throw new RuntimeError(
+                String.format("Expected %s arguments, but got %s", function.arity(), arguments.size()),
                 expr.getParen());
     }
 
@@ -339,7 +341,7 @@ public class Interpreter implements ExprVisitor, StmtVisitor {
 
     @Override
     public Object visitThisExpr(This expr) {
-        return lookUpVariable(expr.getKeyword(), expr);
+        return lookUpVariable(expr.getName(), expr);
     }
 
     private Object lookUpVariable(Token name, Expr expr) {

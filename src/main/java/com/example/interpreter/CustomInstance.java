@@ -29,4 +29,9 @@ public class CustomInstance {
     void set(Token name, Object value) {
         fields.put((String) name.getLiteral(), value);
     }
+
+    @Override
+    public String toString() {
+        return String.format("<instance:\"%s>", customClass);
+    }
 }

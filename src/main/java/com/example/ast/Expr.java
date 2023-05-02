@@ -136,14 +136,14 @@ public abstract class Expr {
     @Getter
     @AllArgsConstructor
     public static class This extends Expr {
-        private final Token keyword;
+        private final Token name;
 
         public Object accept(ExprVisitor v) {
             return v.visitThisExpr(this);
         }
 
         public String toString() {
-            return String.format("this.%s", keyword.getLiteral());
+            return String.format("this");
         }
     }
 

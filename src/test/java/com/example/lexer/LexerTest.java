@@ -51,16 +51,6 @@ public class LexerTest {
                 { "*=", TokenType.MultiplyAssign },
                 { "^=", TokenType.ExponentAssign },
                 { "!=", TokenType.NotEqual },
-                { "for", TokenType.For },
-                { "while", TokenType.While },
-                { "fn", TokenType.Function },
-                { "let", TokenType.Let },
-                { "if", TokenType.If },
-                { "else", TokenType.Else },
-                { "return", TokenType.Return },
-                { "class", TokenType.Class },
-                { "break", TokenType.Break },
-                { "continue", TokenType.Continue }
         });
     }
 

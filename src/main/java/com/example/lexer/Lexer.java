@@ -233,8 +233,8 @@ public class Lexer {
         String text = new String(input, start, pos - start);
         TokenType type = keywords.get(text);
         if (type == null)
-            return new Token(TokenType.Identifier, line, col, text);
-        return new Token(type, line, col);
+            type = TokenType.Identifier;
+        return new Token(type, line, col, text);
     }
 
     private void removeComment() {

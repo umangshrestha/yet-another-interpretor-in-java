@@ -225,8 +225,8 @@ public class Resolver implements ExprVisitor, StmtVisitor {
     @Override
     public Object visitThisExpr(This expr) {
         if (currentClass == ClassType.NONE)
-            throw new RuntimeError("Cannot use 'this' outside of a class.", expr.getKeyword());
-        resolveLocal(expr, expr.getKeyword());
+            throw new RuntimeError("Cannot use 'this' outside of a class.", expr.getName());
+        resolveLocal(expr, expr.getName());
         return null;
     }
 

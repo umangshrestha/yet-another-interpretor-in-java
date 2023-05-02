@@ -7,19 +7,19 @@ import com.example.environment.Environment;
 
 public class CustomFunction implements CustomCallable {
     Environment closure;
-    Boolean isInitializer = false;
+    Boolean isConstructor = false;
     Stmt.Function declaration;
 
-    CustomFunction(Stmt.Function declaration, Environment closure, Boolean isInitializer) {
+    CustomFunction(Stmt.Function declaration, Environment closure, Boolean isConstructor) {
         this.closure = closure;
-        this.isInitializer = isInitializer;
+        this.isConstructor = isConstructor;
         this.declaration = declaration;
     }
 
     CustomFunction bind(CustomInstance instance) {
         Environment environment = new Environment(closure);
         environment.define("this", instance);
-        return new CustomFunction(declaration, environment, isInitializer);
+        return new CustomFunction(declaration, environment, isConstructor);
     }
 
     @Override
@@ -40,12 +40,9 @@ public class CustomFunction implements CustomCallable {
                     declaration.getBody().getStmts(),
                     environment);
         } catch (CustomError.Return returnValue) {
-            if (isInitializer) {
-                return closure.getAt(0, "this");
-            }
             return returnValue.getValue();
         }
-        if (isInitializer) {
+        if (isConstructor) {
             return closure.getAt(0, "this");
         }
         return null;
@@ -53,7 +50,7 @@ public class CustomFunction implements CustomCallable {
 
     @Override
     public String toString() {
-        return "<fn:\"" + declaration.getName().getLiteral() + "\">";
+        return String.format("<fn:\"%s\">", declaration.getName());
     }
 
 }
